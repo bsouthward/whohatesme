@@ -15,17 +15,16 @@ app = Flask(__name__)
 @app.route("/", methods=['GET', 'POST'])
 def record():
 	response = VoiceResponse()
-	response.say("What is cracking fool?")
+	response.say("What's cracking, fool?", loop=1)
 	# response.play("/audio/beep.wav")
-	response.record(maxLength=30, timeout=5, transcribeCallback="/transcribe")
+	response.record(max_length=30, timeout=30, action="/hangup", 
+		transcribe_callback="/transcribe")
 	response.hangup()
 	return str(response)
 
 # this one sends texts
 @app.route("/transcribe", methods=["GET", "POST"])
 def sendSentiment():
-	my_number = "+14155551234"
-	app_number = "+15105554321"
 	dummy = request.form 
 	caller_number, text = request.form['From'], request.form['TranscriptionText']
 	#text = dummy['TranscriptionText']
@@ -34,11 +33,18 @@ def sendSentiment():
 	#sentiment = "angry"
 	body_text = 'Caller at ' + caller_number + ' is ' + sentiment + " : " + text
 	message = client.messages.create(
-		my_number,
+		"+15125341001",
 		body=body_text,
-		from_=app_number)
+		from_="+15046669635")
 	print(message.sid)
 	return str(message)
+
+# hang up
+@app.route("/hangup", methods=["GET", "POST"])
+def hangUp():
+	response = VoiceResponse()
+	response.hangup()
+	return str(response)
 
 # run
 if __name__ == '__main__':

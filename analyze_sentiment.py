@@ -1,5 +1,4 @@
 # this takes in the text of a call transcription and analyzes it for sentiment
-#later: generate tree images setence-wise and MMS
 
 from textblob import TextBlob
 from nltk import *
