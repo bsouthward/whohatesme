@@ -87,7 +87,7 @@ simplejson==3.13.2
 six==1.11.0
 sklearn-pandas==1.6.0
 tempora==1.10
-tensorflow==1.5.0
+tensorflow==2.7.2
 tensorflow-tensorboard==1.5.1
 terminado==0.8.1
 testpath==0.3.1
