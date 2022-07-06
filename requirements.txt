@@ -20,7 +20,7 @@ feedparser==5.2.1
 Flask==1.0.2
 future==0.16.0
 googletrans==2.3.0
-html5lib==0.9999999
+html5lib==0.999999999
 idna==2.6
 inline==0.0.1
 ipykernel==4.7.0
